@@ -82,7 +82,7 @@ def reward_r3(completions, answer, **kwargs):
             rep_ratio = repeats / (len(lines) - 1)
         else:
             rep_ratio = 0.0
-        invalid = 1.0 if len(resp.strip()) < 10 else 0.0
+        invalid = 0.0 if format_ok else 1.0
         rewards.append(correct + 0.1 * format_ok - 0.1 * rep_ratio - 0.1 * invalid)
     _STEP["n"] += 1
     _record(_STEP["n"], completions, answer, rewards)
