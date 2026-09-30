@@ -1,5 +1,10 @@
-torch>=2.0
-transformers>=4.40
-peft>=0.10
-trl>=0.12
-datasets>=2.20
+# Core dependencies (exact versions to reproduce this project)
+torch==2.13.0
+transformers==5.17.0
+peft==0.21.0
+trl==1.14.0
+datasets==5.0.1
+
+# Note on CUDA:
+# Tested with torch 2.13.0+cu130 on CUDA 13.0
+# Install with: pip install torch==2.13.0 --index-url https://download.pytorch.org/whl/cu130
