@@ -96,9 +96,18 @@ class StopAtStepCallback(TrainerCallback):
         return control
 
 
+# 可选：通过环境变量控制提前停止步数
+STOP_AT_STEP = os.environ.get("STOP_AT_STEP")
+if STOP_AT_STEP:
+    callbacks = [StopAtStepCallback(int(STOP_AT_STEP))]
+    print(f"[callback] 将在 step {STOP_AT_STEP} 停止")
+else:
+    callbacks = []
+
 trainer = GRPOTrainer(
     model=model,
     reward_funcs=reward_func,
+    callbacks=callbacks,
     args=config,
     train_dataset=dataset,
     processing_class=tokenizer,
