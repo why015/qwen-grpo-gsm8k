@@ -19,23 +19,32 @@ _FALLBACK_NUMBER = re.compile(r"([\-\d]+(?:\.\d+)?)")
 
 
 def extract_answer(text: str):
-    """从模型输出中提取答案；失败返回 None。"""
     if not text:
         return None
     text = text.strip()
 
+    # 第一优先级：模式匹配（####、答案：、\boxed{} 等）
+    pattern_candidates = []
     for pat in _PATTERNS:
-        matches = pat.findall(text)
-        if matches:
-            return matches[-1]
+        for m in pat.finditer(text):
+            pattern_candidates.append((m.end(), m.group(1)))
 
-    # 兜底：只在最后一行找数字，避免从中间推理步骤误抓
-    last_line = text.split("\n")[-1].strip()
-    matches = _FALLBACK_NUMBER.findall(last_line)
-    if matches:
-        return matches[-1]
+    if pattern_candidates:
+        pattern_candidates.sort(key=lambda x: -x[0])
+        return pattern_candidates[0][1]
 
-    return None
+    # 第二优先级（兜底）：只在没有任何模式匹配时启用
+    last_line_start = text.rfind("\n") + 1
+    last_line = text[last_line_start:].strip()
+    fallback_candidates = []
+    for m in _FALLBACK_NUMBER.finditer(last_line):
+        fallback_candidates.append((last_line_start + m.end(), m.group(0)))
+
+    if not fallback_candidates:
+        return None
+
+    fallback_candidates.sort(key=lambda x: -x[0])
+    return fallback_candidates[0][1]
 
 
 def normalize(x):
