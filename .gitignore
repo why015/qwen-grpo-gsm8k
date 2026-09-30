@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.tmp/
+
+# 大文件（本地保留，不上传）
+models/
+*.safetensors
+*.bin
+
+# 数据（本地保留，不上传）
+deep_project/data/raw/*.jsonl
+deep_project/data/processed/*.jsonl
+archive/data/*.jsonl
+archive/data/multistep/*.jsonl
+
+# 训练输出
+deep_project/outputs/*.jsonl
+deep_project/outputs/*.log
+archive/outputs/*.jsonl
+*.log
+
+# 备份
+backups/
+
+# OS
+.DS_Store
+
+# 但保留这些关键小文件
+!deep_project/data/processed/regression28_ids.txt
+!docs/analysis/*.txt
+!logs/*.log

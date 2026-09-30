@@ -1,0 +1,655 @@
+==========================================================================================
+gsm8k-train-7386  |  gold = 20
+题目： There are 80 passengers on the airplane where the number of men and women is equal. The rest of the passengers are children. How many children are on the airplane if there are 30 men?
+
+[base 回答]:
+   \]
+
+3. **Determine the number of children:**
+   - The total number of passengers is 80.
+   - Subtract the number of adults from the total number of passengers:
+     \[
+     \text{Number of children} = \text{Total number of passengers} - \text{Total number of adults} = 80 - 60 = 20
+     \]
+
+4. **State the final answer:**
+   \[
+   \boxed{20}
+   \]
+
+[SFT 回答]:
+The total number of men and women on the plane is 30 + 80 = 110.
+So, there are 110/2 = 55 children on the plane.
+答案：55
+==========================================================================================
+gsm8k-train-4160  |  gold = 100
+题目： Hannah harvests 5 strawberries daily for the next whole month of April, which has 30 days. If she gives away 20 strawberries to her friends and 30 strawberries are stolen, how many strawberries does she have by the end of April?
+
+[base 回答]:
+rries} \]
+
+接着，我们从总数中减去她给朋友和被盗掉的草莓：
+
+\[ \text{剩余草莓} = \text{总收获} - (\text{给朋友的草莓} + \text{被盗的草莓}) \]
+\[ \text{剩余草莓} = 150 \text{ strawberries} - (20 \text{ strawberries} + 30 \text{ strawberries}) \]
+\[ \text{剩余草莓} = 150 \text{ strawberries} - 50 \text{ strawberries} \]
+\[ \text{剩余草莓} = 100 \text{ strawberries} \]
+
+所以，Hannah 在四月结束时还剩下100个草莓。答案是：100。
+
+[SFT 回答]:
+In April there are 30 days so Hannah will harvest 5*30 = 150 strawberries.
+She gives away 20 strawberries and then steals 30 so she is left with 150-20-30 = 80 strawberries.
+答案：80
+==========================================================================================
+gsm8k-train-5971  |  gold = 20
+题目： Matt can buy key chains in packs of 10 for $20 or in packs of 4 for $12. How much money can he save if he chooses to buy 20 key chains at a lower price?
+
+[base 回答]:
+osing the cheaper option:
+\[ \text{Savings} = \text{Cost of Option A} - \text{Cost of Option B} = 40 - 60 = -\$20 \]
+
+Since the savings is negative, it means Matt actually spends more than he would have with the cheaper option. Therefore, Matt cannot afford to buy 20 key chains at the lower price without spending more than $20.
+
+Answer: No savings.
+
+[SFT 回答]:
+ Matt buys the key chains in packs of 10, he will pay 20/10 = $2 per pack.
+The total cost of buying 20 key chains is 2*20 = $40.
+If Matt buys the key chains in packs of 4, he will pay 20/4 = $5 per pack.
+The total cost of buying 20 key chains is 20*5 = $100.
+He saves $100-$40 = $60 by choosing to buy them in packs of 4 instead of packs of 10.
+答案：60
+==========================================================================================
+gsm8k-train-4874  |  gold = 45
+题目： Fran baked 50 red macaroons and 40 green macarons. How many macaroons will remain if Fran ate 15 green macaroons and twice as many red macaroons as green macaroons?
+
+[base 回答]:
+macaroons，然后再计算剩余的macaroons数量。
+
+Fran吃了15个绿色的macaroons：
+\[ \text{红色的macaroons} = 2 \times 15 = 30 \]
+
+接着，我们计算剩余的macaroons数量：
+\[ \text{剩余的macaroons} = \text{红色的macaroons} - \text{已吃的绿色的macaroons} + \text{已吃的红色的macaroons} \]
+\[ \text{剩余的macaroons} = 30 - 15 + 30 \]
+\[ \text{剩余的macaroons} = 60 - 15 \]
+\[ \text{剩余的macaroons} = 45 \]
+
+因此，答案是45个macaroons。
+
+[SFT 回答]:
+If Fran ate 15 green macaroons, then she also ate 2 * 15 = 30 red macaroons.
+The total number of red macaroons that Fran ate is 30 + 50 = 80.
+The total number of macaroons remaining after Fran ate the macaroons is 50 - 80 = -30.
+答案：-30
+==========================================================================================
+gsm8k-train-3244  |  gold = 125
+题目： A radio show plays for 3 hours a day. They split their show into talking segments, ad breaks and songs. Talking segments last 10 minutes each, ad breaks last 5 minutes each and songs are played throughout the rest of the show. If the radio show includes 3 talking segments and 5 ad breaks in today’s show, how long, in minutes, does the show play songs?
+
+[base 回答]:
+lking) + 25 minutes (ad breaks) = 55 minutes
+
+Now, subtract this from the total duration of the show to find out how much time is left for songs:
+
+Time for songs = Total duration - Time spent on talking segments and ad breaks
+Time for songs = 180 minutes - 55 minutes = 125 minutes
+
+Therefore, the show plays songs for 125 minutes. The answer: 125分钟。
+
+[SFT 回答]:
+The total time spent on talking segments is 3 x 10 = 30 minutes.
+The total time spent on ad breaks is 5 x 5 = 25 minutes.
+So, the total time spent playing songs is 30 + 25 = 55 minutes.
+答案：55
+==========================================================================================
+gsm8k-train-5028  |  gold = 5
+题目： It takes 1 person working 10 hours to figure out the solution to a math problem.  If you add a second person who's equally good at math, how long will the two of them have to work to solve the same problem?
+
+[base 回答]:
+lete one more problem together. We use the formula:
+\[ \text{Time} = \frac{\text{Total number of problems}}{\text{Combined rate}} \]
+Substituting the values we have:
+\[ \text{Time} = \frac{1}{\left(\frac{1}{5}\right)} = 5 \text{ hours} \]
+
+Therefore, the time required for two people to solve the same math problem together is 5 hours. The answer: 5.
+
+[SFT 回答]:
+If one person can do the job in 10 hours, then they would be able to complete the task alone in 60/10=6 hours.
+Since the two people are doing the job together, their combined rate is 1/6+1/6=1/3.
+So it will take them 3 hours to finish the job if they work together.
+答案：3
+==========================================================================================
+gsm8k-train-2216  |  gold = 50
+题目： Jenna is adding black dots to a bunch of white blouses. Each blouse gets 20 dots, and each dot takes 10 ml of black dye. How many 400-ml bottles of dye does Jenna need to buy to dye 100 blouses?
+
+[base 回答]:
+由于每件白衬衫有20个黑点，每个黑点需要10毫升的染料，那么总共需要的染料量为：
+
+\[20 \text{ 黑点/件} \times 10 \text{ 毫升/黑点} = 200 \text{ 毫升}\]
+
+接下来，我们计算出要染制100件白衬衫所需的总染料量：
+
+\[200 \text{ 毫升/件} \times 100 \text{ 件} = 20000 \text{ 毫升}\]
+
+最后，我们知道一罐400毫升的染料可以染制20000毫升的衣物，所以Jenna需要购买的染料瓶数为：
+
+\[\frac{20000 \text{ 毫升}}{400 \text{ 毫升/瓶}} = 50 \text{ 瓶}\]
+
+因此，Jenna需要购买50瓶400毫升的染料来染制100件白衬衫。答案是：50。
+
+[SFT 回答]:
+use: 1 blouse * 20 dots/blouse = 20 dots
+Then multiply that amount by the number of dots per blouse to find the total number of dots needed: 20 dots/blouse * 100 blouses = 2000 dots
+Then divide the total number of dots needed by the number of dots per bottle to find how many bottles Jenna needs to buy: 2000 dots / 100 dots/bottle = 20 bottles
+答案：20
+==========================================================================================
+gsm8k-train-7368  |  gold = 48
+题目： Fifteen more than a quarter of a number is 27. What is the number?
+
+[base 回答]:
+设这个数为 \( x \)。
+
+根据题目描述，“十五大于一个数的四分之一”，可以表示为：
+\[ \frac{1}{4}x + 15 = 27 \]
+
+接下来解这个方程找出 \( x \) 的值：
+
+\[
+\begin{align*}
+\frac{1}{4}x + 15 &= 27 \\
+\frac{1}{4}x &= 27 - 15 \\
+\frac{1}{4}x &= 12 \\
+x &= 12 \times 4 \\
+x &= 48
+\end{align*}
+\]
+
+所以，这个数是 48。答案：48。
+
+[SFT 回答]:
+Let x be the unknown number.
+15/4 + x = 27
+x = 27 - 15/4
+x = 108/4 - 15/4
+x = 93/4
+x = 23.25
+答案：23.25
+==========================================================================================
+gsm8k-train-1023  |  gold = 800
+题目： Cooper is building a brick fence around all four sides of his property.  Each of the four walls of his fence is 20 bricks long, 5 bricks high, and 2 bricks deep.  How many bricks does Cooper need to complete his fence?
+
+[base 回答]:
+uare bricks} = 400 \text{ square bricks}\).
+
+3. **Calculate the total number of bricks needed:**
+   - Each brick has a depth of 2 bricks.
+   - Therefore, the total number of bricks required is \(400 \text{ square bricks} \times 2 \text{ bricks/square brick} = 800 \text{ bricks}\).
+
+So, Cooper needs 800 bricks to complete his fence. The answer: 800.
+
+[SFT 回答]:
+Each wall has 4*20=80 bricks.
+So he needs 4*80=320 bricks for each side.
+That means he needs 320*4=1280 bricks in total.
+答案：1280
+==========================================================================================
+gsm8k-train-3654  |  gold = 60
+题目： Philip has a farm with animals. He has 20 cows, 50% more ducks. Philip also has as many pigs as one-fifth of ducks and cows in total. How many animals does Philip have on his farm?
+
+[base 回答]:
+culate the number of pigs:
+- The number of pigs is one-fifth of the total number of ducks and cows combined.
+- Total number of ducks and cows: \(20 + 30 = 50\).
+- Number of pigs: \(\frac{50}{5} = 10\).
+
+Now, let's add up all the animals:
+- Cows: 20
+- Ducks: 30
+- Pigs: 10
+
+Total number of animals: \(20 + 30 + 10 = 60\).
+
+Therefore, the answer is 60.
+
+[SFT 回答]:
+ucks
+Then add the number of ducks to the number of cows to find the total number of ducks and cows: 30 ducks + 20 cows = 50 animals
+Then divide that number by 5 to find the number of pigs: 50 animals / 5 = 10 pigs
+Finally, add the number of ducks, cows, and pigs to find the total number of animals: 50 animals + 30 ducks + 10 pigs = 90 animals
+答案：90
+==========================================================================================
+gsm8k-train-4791  |  gold = 70
+题目： A cougar is sleeping for 4 hours at night, and a zebra for 2 hours more. How much time do both animals sleep in one week?
+
+[base 回答]:
+ cougar）每天睡眠时间 = 4小时
+
+- 非兽类动物（zebra）每天睡眠时间 = 4小时 + 2小时 = 6小时
+
+接下来，我们将这两个时间段相加得到一天总睡眠时间：
+
+- 一天总睡眠时间 = 兽类动物每天睡眠时间 + 非兽类动物每天睡眠时间
+                = 4小时 + 6小时
+                = 10小时
+
+最后，我们需要计算一周内总的睡眠时间：
+
+- 一周总睡眠时间 = 一天总睡眠时间 × 7天
+                  = 10小时/天 × 7天
+                  = 70小时
+
+所以，A cougar and a zebra together sleep for **70** hours in one week.
+
+[SFT 回答]:
+The zebra sleeps for 4 + 2 = 6 hours.
+So the total amount of time they sleep together in one week is 6 * 7 = 42 hours.
+答案：42
+==========================================================================================
+gsm8k-train-6797  |  gold = 510
+题目： Barney can perform 45 sit-ups in one minute. Carrie can do twice as many sit-ups per minute as Barney can.  And Jerrie can do 5 more sit-ups per minute than Carrie can do.  If Barney does sit-ups for 1 minute, and Carrie does sit-ups for two minutes, and Jerrie does sit-ups for three minutes, what would be the combined total number of sit-ups performed?
+
+[base 回答]:
+ Total sit-ups: \(90 \times 2 = 180\)
+
+3. **Jerrie's performance:**
+   - Time: \(3\) minutes
+   - Sit-ups per minute: \(95\)
+   - Total sit-ups: \(95 \times 3 = 285\)
+
+Finally, we add up the sit-ups from all three individuals to get the combined total:
+\[ 45 + 180 + 285 = 510 \]
+
+Therefore, the combined total number of sit-ups performed is \(510\).
+
+[SFT 回答]:
+Carrie can do 2*45=90 sit ups per minute.
+Jerrie can do 90+5=95 sit ups per minute.
+In the first scenario, Barney does 45 sit ups in 1 minute, so he does 45*1=45 sit ups.
+Carrie does 90*2=180 sit ups in 2 minutes.
+Jerrie does 95*3=285 sit ups in 3 minutes.
+The combined total is 45+180+285=460 sit ups.
+答案：460
+==========================================================================================
+gsm8k-train-1256  |  gold = 116
+题目： Conor can chop 12 eggplants, 9 carrots, and 8 potatoes in a day. If he works 4 times a week, how many vegetables can he chop?
+
+[base 回答]:
+:
+
+1. Calculate the daily vegetable count:
+   - Eggplants: 12
+   - Carrots: 9
+   - Potatoes: 8
+
+   Total daily vegetable count = 12 + 9 + 8 = 29
+
+2. Multiply the daily vegetable count by the number of workdays in a week (which is 4):
+   Daily vegetable count × Workdays per week = 29 × 4 = 116
+
+Therefore, Conor can chop **116** vegetables in a week.
+
+[SFT 回答]:
+In one day, Conor chops 12 + 9 + 8 = 31 vegetables.
+So in a week, he chops 31 x 4 = 124 vegetables.
+答案：124
+==========================================================================================
+gsm8k-train-3832  |  gold = 36
+题目： A florist is making bouquets for the weekend. The florist uses red, yellow, orange, and purple flowers, and each bouquet contains 9 flowers of any color combinations. This week he planted 125 seeds for each color of flower. Unfortunately, a fungus killed 45 red flowers, 61 yellow, 30 orange, and 40 purple flowers. How many bouquets can the florist make this weekend?
+
+[base 回答]:
+ the flowers to find out how many flowers are left:
+\[80 + 64 + 95 + 85 = 324\]
+
+Each bouquet contains 9 flowers. To find out how many bouquets can be made from the remaining flowers, we divide the total number of flowers by the number of flowers per bouquet:
+\[324 \div 9 = 36\]
+
+Therefore, the florist can make \(\boxed{36}\) bouquets this weekend.
+
+[SFT 回答]:
+The total number of flowers that were not used in the bouquets is 125*9 = 1125.
+There are 45+61+30+40 = 176 flowers that were not used to make the bouquets.
+This means there are 176-45-61-30-40 = 18 bouquets made from these flowers.
+So, the florist can make 18/9 = 2 bouquets this weekend.
+答案：2
+==========================================================================================
+gsm8k-train-22  |  gold = 7
+题目： Samantha’s last name has three fewer letters than Bobbie’s last name. If Bobbie took two letters off her last name, she would have a last name twice the length of Jamie’s. Jamie’s full name is Jamie Grey. How many letters are in Samantha’s last name?
+
+[base 回答]:
+four letters long).
+
+Now let's solve for \( S \):
+
+Given:
+\[ S = B - 3 \]
+And since \( B - 2 = 2 \times 4 \):
+\[ B - 2 = 8 \]
+So,
+\[ B = 8 + 2 \]
+\[ B = 10 \]
+
+Now substitute \( B \) back into the first equation to find \( S \):
+\[ S = B - 3 \]
+\[ S = 10 - 3 \]
+\[ S = 7 \]
+
+Therefore, Samantha's last name has 7 letters. The answer is:
+
+```
+答案：7
+```
+
+[SFT 回答]:
+Bobbie’s last name has 7 letters.
+If Bobbie took two letters off her last name, she would have 7-2 = 5 letters.
+Since this number is half the length of Jamie’s last name, then Jamie’s last name has 5*2 = 10 letters.
+Samantha’s last name has 3 more letters than Bobbie’s last name, so it has 5+3 = 8 letters.
+答案：8
+==========================================================================================
+gsm8k-train-5575  |  gold = 20
+题目： Jade had $38 and her sister Julia had half as much money she had. On New Year's eve, their aunt gave each of them an equal amount of money so that they had a total of $97. How much did their aunt give each of them?
+
+[base 回答]:
+ore, the amount of money they received from their aunt is:
+- Amount received from aunt: \( 97 - 57 = 40 \) dollars.
+
+Since this amount was split equally between Jade and Julia, we can find out how much each received by dividing the total amount received by 2:
+- Amount per person: \( \frac{40}{2} = 20 \) dollars.
+
+So, the answer is:
+\[ \boxed{20} \]
+
+[SFT 回答]:
+Julia had $38 / 2 = $19.
+So, the total amount of money they had after their aunt gave them some money was $38 + $19 = $57.
+Thus, their aunt gave each of them $97 - $57 = $40.
+答案：40
+==========================================================================================
+gsm8k-train-7209  |  gold = 57
+题目： The price of candy bars is twice the cost of caramel, and the cost of cotton candy is half the price of 4 candy bars. If the price of 1 caramel is $3, how much do 6 candy bars, 3 caramel, and 1 cotton candy cost together?
+
+[base 回答]:
+ of 1 cotton candy} = 1 \times \text{Price of one cotton candy} = 1 \times 12 = \$12
+  \]
+
+Finally, summing up all these costs gives us the total cost:
+
+\[
+\text{Total cost} = \text{Cost of 6 candy bars} + \text{Cost of 3 caramel} + \text{Cost of 1 cotton candy}
+\]
+\[
+\text{Total cost} = 36 + 9 + 12 = \$57
+\]
+
+Therefore, the answer is: $\boxed{57}$
+
+[SFT 回答]:
+Caramel:3 * $3 = $9
+Candy bar:2 * $9 = $18
+Cotton candy:$1/2 * (2 * $9) = $18
+6 candy bars + 3 caramel + 1 cotton candy = $18 * 6 = $108
+答案：108
+==========================================================================================
+gsm8k-train-476  |  gold = 92
+题目： Joey wants to buy the latest released pair of designer High Jump basketball sneakers. He plans to mow 3 neighbors’ lawns for $8 a lawn, sell 2 collectible figures to his friends for $9 each, and work an after-school job for 10 hours at $5 per hour. If his earnings just cover the price of the High Jump sneakers, how much do the shoes cost?
+
+[base 回答]:
+ \$18 \]
+
+Then, let's calculate his earnings from working the after-school job:
+\[ 10 \text{ hours} \times \$5 \text{ per hour} = \$50 \]
+
+Now, let's add up all these amounts to get his total earnings:
+\[ \$24 + \$18 + \$50 = \$92 \]
+
+Since Joey's earnings just cover the price of the High Jump sneakers, the cost of the sneakers is:
+\[ \boxed{92} \]
+
+[SFT 回答]:
+He earns $8 x 3 = $24 from mowing lawns.
+He earns $9 x 2 = $18 from selling figures.
+So he earned a total of $24 + $18 = $42.
+Thus, the sneakers cost $42 + $5 x 10 = $64.
+答案：64
+==========================================================================================
+gsm8k-train-4287  |  gold = 11
+题目： Carmen is preparing dinner plates for a row of customers at the counter in a diner. She likes to put a couple of sprigs of parsley on each plate for decoration. However, she is very low on parsley and doesn't have enough to even put 1 sprig on every plate, so she needs to break several of the parsley sprigs in two to make 2 smaller ones to stretch them out. If she decorates 8 plates with one whole
+
+[base 回答]:
+ plates with half a sprig each: \(12 \times \frac{1}{2} = 6\) sprigs.
+
+Adding these together gives us the total number of sprigs used:
+\[8 + 6 = 14\]
+
+Now, we know Carmen started with 25 sprigs. To find out how many sprigs she has left, we subtract the number of sprigs used from the initial amount:
+\[25 - 14 = 11\]
+
+Therefore, the answer is:
+\[11\]
+
+[SFT 回答]:
+She decorated 8+12=20 plates.
+So she used 2*20 = 40 sprigs of parsley.
+This means she has 25-40=-15 sprigs left.
+答案：-15
+==========================================================================================
+gsm8k-train-3462  |  gold = 600
+题目： After complaints from the residents of Tatoosh about the number of cats on the island, the wildlife service carried out a relocation mission that saw the number of cats on the island drastically reduced. On the first relocation mission, 600 cats were relocated from the island to a neighboring island. On the second mission, half of the remaining cats were relocated to a rescue center inland. If the
+
+[base 回答]:
+efore, the number of cats relocated in the second mission is:
+\[ \frac{1200}{2} = 600 \]
+
+Finally, for step 3:
+We subtract the number of relocated cats from the original number of cats to find out how many cats remain on the island:
+\[ 1200 - 600 = 600 \]
+
+So, the number of cats remaining on the island after the rescue mission is:
+\[ \boxed{600} \]
+
+[SFT 回答]:
+On the second mission, 600/2 = 300 cats were relocated.
+The total number of cats remaining on the island is 1800-600 - 300 = 900 cats.
+答案：900
+==========================================================================================
+gsm8k-train-1046  |  gold = 12
+题目： Susan had a bouquet of 3 dozen roses.  She gave half to her daughter, and then placed the rest in a vase.  The next day, one-third of the flowers in the vase were wilted.  After removing the wilted flowers, how many flowers remained in the vase?
+
+[base 回答]:
+s.
+
+3. This leaves \(36 - 18 = 18\) roses in the vase.
+
+4. One-third of the remaining roses wilted the next day.
+   - One-third of 18 roses is \(18 / 3 = 6\) roses.
+
+5. After removing these wilted roses, the number of remaining roses is \(18 - 6 = 12\).
+
+Therefore, after removing the wilted flowers, there are 12 roses left in the vase. 
+
+Answer: 12
+
+[SFT 回答]:
+Susan had 3*12=36 roses.
+She gave half to her daughter so she was left with 36/2=18 roses.
+The next day there were 18-1/3 = 54/3=18 wilted roses remaining.
+So after removing the wilted ones, there were 18+18=36 roses in the vase.
+答案：36
+==========================================================================================
+gsm8k-train-6717  |  gold = 13
+题目： In four years, Peter will be twice as old as Harriet. If Peter's age is currently half of his mother's age, who is 60, how old is Harriet now?
+
+[base 回答]:
+) 和 \( H \) 的关系：
+
+\[ P + 4 = 2(H + 4) \]
+\[ P + 4 = 2H + 8 \]
+\[ P = 2H + 4 \]
+
+现在我们有两个方程：
+- \( P = 2H + 4 \)
+- \( P = \frac{M}{2} \)
+
+由于 \( M = 60 \)，我们可以用这个值来验证我们的假设是否正确。将 \( M = 60 \) 代入第二个方程：
+
+\[ P = \frac{60}{2} \]
+\[ P = 30 \]
+
+现在我们知道了 \( P = 30 \)，可以使用第一个方程来找到 \( H \)：
+
+\[ 30 = 2H + 4 \]
+\[ 2H = 26 \]
+\[ H = 13 \]
+
+因此，Harriet现在的年龄是13岁。答案：13。
+
+[SFT 回答]:
+Peter's mother is 60/2=30 years old.
+Four years from now, Peter will be 4+30=34 years old.
+If in four years Peter will be twice as old as Harriet, then Harriet is 34/2=17 years old now.
+答案：17
+==========================================================================================
+gsm8k-train-6531  |  gold = 3
+题目： A cookfire burns three logs every hour. It was built with six logs to start. If it gets two more logs added to it at the end of every hour, how many logs will be left after 3 hours?
+
+[base 回答]:
+首先，我们计算每小时烧掉的 Logs 数量：
+
+- 第1小时：6 - 3 = 3 Logs
+- 第2小时：3 - 3 = 0 Logs
+- 第3小时：0 - 3 = -3 Logs
+
+由于负数表示没有剩余，所以实际上在第3小时内，火堆会失去3 Logs。
+
+接着，我们将这些 Log 数量加到初始的6 Logs 上来得到最终数量：
+
+- 最终数量 = 6 + (-3) = 3 Logs
+
+因此，答案是：3 Logs。
+
+[SFT 回答]:
+After the first hour, there will be 6+2 = 8 logs.
+After the second hour, there will be 8+2 = 10 logs.
+After the third hour, there will be 10+2 = 12 logs.
+答案：12
+==========================================================================================
+gsm8k-train-5145  |  gold = 86
+题目： A class is 40% boys. The rest are girls. Every boy in class gets an 80% on the math test. Every girl gets a 90%. What is the class average on the test?
+
+[base 回答]:
+首先，我们计算总人数。因为是40%的学生是男孩，那么剩下的60%就是女孩。所以，总人数为 \(40\% \times 100 = 40\) 名学生。
+
+接下来，我们分别计算男生和女生的成绩。男生有40名，他们每人得了80%，即 \(40 \times 80\% = 32\) 分。女生有60名，她们每人得了90%，即 \(60 \times 90\% = 54\) 分。
+
+最后，我们将两个成绩相加得到全班的平均分，即 \(32 + 54 = 86\) 分。
+
+因此，班级的平均分是86分。答案：86。
+
+[SFT 回答]:
+The number of boys in the class is 160 because 40 x .4 = 16
+The number of girls in the class is 20 because 40 - 16 = 20
+The total score for the boys is 16 x .8 = 12
+The total score for the girls is 20 x .9 = 18
+The class average is 15 because 12 + 18 = 30 and 30 / 20 = 1.5
+答案：1.5
+==========================================================================================
+gsm8k-train-5774  |  gold = 53
+题目： An animal shelter is having a pet adoption event where owners can adopt an animal for just the cost of the vet fees. Vet fees for dogs are $15, and vet fees for cats are $13. Eight families adopt dogs and three adopt cats. The vet donates a third of the fees they were paid for the adoption checkups back to the shelter. How many dollars did the vet donate?
+
+[base 回答]:
+rom dogs and cats to find the total vet fees:
+Total vet fees = $120 (dogs) + $39 (cats) = $159.
+
+The vet donates a third of the fees they were paid for the adoption checkups back to the shelter. To find out how much was donated, we divide the total vet fees by 3:
+Donation amount = Total vet fees / 3 = $159 / 3 = $53.
+
+Therefore, the answer is: $53.
+
+[SFT 回答]:
+The total vet fee for the dog adoption was 8 * 15 = $120.
+The total vet fee for the cat adoption was 3 * 13 = $39.
+So in total, the vet donated 1/3 * (120 + 39) = $46.
+答案：46
+==========================================================================================
+gsm8k-train-2556  |  gold = 51700
+题目： One white rhino weighs 5100 pounds and one black rhino weighs 1 ton. How many pounds would 7 white rhinos and 8 black rhinos weigh in total?
+
+[base 回答]:
+ack rhinos:
+\[ 8 \text{ black rhinos} \times 2000 \text{ pounds/black rhino} = 16000 \text{ pounds} \]
+
+Next, we add these two amounts together to get the total weight:
+\[ 35700 \text{ pounds} + 16000 \text{ pounds} = 51700 \text{ pounds} \]
+
+Therefore, the total weight of 7 white rhinos and 8 black rhinos is 51700 pounds. The answer: 51700 pounds.
+
+[SFT 回答]:
+First find the weight of the white rhinos: 5100 pounds/white rhino * 7 white rhinos = 35700 pounds
+Then find the weight of the black rhinos: 1 ton * 2 tons/hundredweight = 2 hundredweights
+Then add that to the weight of the white rhinos: 35700 pounds + 2 hundredweights = 36900 pounds
+答案：36900
+==========================================================================================
+gsm8k-train-4414  |  gold = 70
+题目： John climbs up 3 flights of stairs.  Each flight is 10 feet.  He then climbs a rope that is half that height.  Finally, he climbs a ladder that is 10 feet longer than the rope.  How high up did he go?
+
+[base 回答]:
+et}
+   \]
+
+4. **Calculate the total height climbed:**
+   - Add the heights of all three parts together.
+   \[
+   \text{Total height} = \text{Height of one flight} + \text{Height of the rope} + \text{Height of the ladder} = 30 \text{ feet} + 15 \text{ feet} + 25 \text{ feet} = 70 \text{ feet}
+   \]
+
+Therefore, John climbed a total height of 70 feet.
+
+[SFT 回答]:
+He climbed 3*10=30 feet
+The ladder was 30/10=3 feet taller than the rope
+So it was 3+10=13 feet
+That means he went up 30+13=43 feet
+答案：43
+==========================================================================================
+gsm8k-train-4226  |  gold = 9
+题目： If there are 8 slices in a large pizza, how many slices will remain if Mary orders 2 large pizzas and eats 7 slices?
+
+[base 回答]:
+, let's calculate the total number of slices from two large pizzas:
+- Each large pizza has 8 slices.
+- Therefore, two large pizzas have \( 8 \times 2 = 16 \) slices.
+
+Next, we subtract the number of slices Mary ate from the total number of slices:
+- Mary ate 7 slices.
+- The remaining slices are \( 16 - 7 = 9 \).
+
+So, the answer is: 9 slices remain.
+
+[SFT 回答]:
+Mary eats 7 slices of pizza, so she has 8 - 7 = 1 slice remaining.
+She orders 2 large pizzas, which means she is eating 2 * 8 = 16 slices of pizza.
+Therefore, the number of slices that remain is 16 - 1 = 15.
+答案：15
+==========================================================================================
+gsm8k-train-4339  |  gold = 15
+题目： Matilda bought a smartphone for $300. Then she decided she wouldn't use it anyway and sold it for $255. What percentage of the initial cost did she lose?
+
+[base 回答]:
+后，我们计算百分比损失：
+
+\[ \text{百分比损失} = \left( \frac{\text{初始成本} - \text{最终售价}}{\text{初始成本}} \right) \times 100\% \]
+
+将数值代入公式中：
+
+\[ \text{百分比损失} = \left( \frac{300 - 255}{300} \right) \times 100\% \]
+\[ \text{百分比损失} = \left( \frac{45}{300} \right) \times 100\% \]
+\[ \text{百分比损失} = 0.15 \times 100\% \]
+\[ \text{百分比损失} = 15\% \]
+
+所以，Matilda的百分比损失是15%。答案：15%。
+
+[SFT 回答]:
+The difference between the selling price and the purchase price is 300 - 255 = $45.
+So, Matilda lost 1/10 * 45 = $45 of her investment.
+答案：45

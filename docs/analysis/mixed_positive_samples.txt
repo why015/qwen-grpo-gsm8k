@@ -1,0 +1,143 @@
+Mixed group 中 reward=1 的 completion 总数: 554
+
+================================================================================
+[1] step=46  gold=5
+Jimmy earned 20 points x 3 exams = 60 points.
+He lost 5 points for bad behavior, so he has 60 points - 5 points = 55 points.
+To be able to pass to the next class, Jimmy needs 50 points or more, so he can lose 55 - 50 points = 5 points more.
+答案：5
+
+================================================================================
+[2] step=14  gold=20
+First figure out how long it takes Ellen to rise all 4 balls of dough: 4 balls * 3 hours/ball = 12 hours
+Then figure out how long it takes Ellen to bake all 4 balls of dough: 4 balls * 2 hours/ball = 8 hours
+Then add the time Ellen takes to rise the dough and the baking time for all 4 balls of dough to find the total time: 12 hours + 8 hours = 20 hours
+答案：20
+
+================================================================================
+[3] step=95  gold=347
+Monika spent $24 x 3 = $72 at the movies.
+So, she spent $250 + $72 + $1.25 x 20 = $250 + $72 + $25 = $347.
+答案：347
+
+================================================================================
+[4] step=87  gold=2100
+Last month Sally earned $1000 so she got a 10/100 * $1000 = $100 increase this month.
+So this month she earned $1000 + $100 = $1100
+So she will make $1100 + $1000 = $2100 in total for the two months
+答案：2100
+
+================================================================================
+[5] step=78  gold=220
+Asaf's age is 50 years.
+The age difference between Asaf and Alexander is half the total number of pencils Asaf has, so Asaf has 50 x 2 = 100 pencils.
+The total number of pencils they have together is 100 + 60 = 160
+Since Asaf is 50 years old, Alexander is 160 - 50 = 110 years old.
+The total number of pencils they have together is 160 + 60 = 220
+答案：220
+
+================================================================================
+[6] step=55  gold=5
+Half the students who attended class wore colored lipstick, a total of 200/2=100 students.
+Of those students who wore lipstick, 1/4 wore red lipstick, a total of 100/4=25 students.
+There were 1/5 as many students wearing blue lipstick as were wearing red lipstick, a total of 25/5=5 students
+答案：5
+
+================================================================================
+[7] step=39  gold=45
+Darryl has to sell $3600 + $4500 = $8100 for his machine to break even.
+So, he needs to sell $8100 / $180 = 45 machines.
+答案：45
+
+================================================================================
+[8] step=36  gold=14
+Lucas needs to spend $2 x 3 = $6 on avocados.
+So, he will bring $20 - $6 = $14 home.
+答案：14
+
+================================================================================
+[9] step=150  gold=4
+First find the total volume of the smoothie mixture: 500 ml + 100 ml = 600 ml
+Then divide the total amount of smoothie volume by the size of each serving to find the total number of servings: 600 ml / 150 ml = 4 servings
+答案：4
+
+================================================================================
+[10] step=17  gold=50
+The number of people at the park is 3 x 25 = 75.
+There are 14 + 11 = 25 girls.
+So, there are 75 - 25 = 50 parents at the park.
+答案：50
+
+================================================================================
+[11] step=16  gold=12
+On the second day, she ate 3 less than twice as many chocolates as she ate the first day, which is 2*4-3 = 5 chocolates.
+On the third day, she ate 2 less than the number she ate on the first day, which is 4-2 = 2 chocolates.
+On the fourth day, she ate 1 less than she ate the previous day, which is 2-1 = 1 chocolate.
+On the fifth day, we have 24-4-5-2-1 = 12 chocolates uneaten.
+答案：12
+
+================================================================================
+[12] step=37  gold=40
+The amount Mildred and Candice spent together is $25 + $35 = $60.
+They will have $100 - $60 = $40 left after spending.
+答案：40
+
+================================================================================
+[13] step=75  gold=75
+First, Janice had 5 drawings on the first page.
+For the second page, she saw 5 + 5 = 10 drawings.
+For the third page, she saw 10 + 5 = 15 drawings.
+For the fourth page, she saw 15 + 5 = 20 drawings.
+For the fifth page, she saw 20 + 5 = 25 drawings.
+So, the total number of drawings in the first five pages is 5 + 10 + 15 + 20 + 25 = 75.
+答案：75
+
+================================================================================
+[14] step=82  gold=99
+Juwan collected 66 / 3 = 22 cans.
+Levi collected 22 / 2 = 11 cans.
+So they collected a total of 66 + 22 + 11 = 99 cans.
+答案：99
+
+================================================================================
+[15] step=183  gold=100
+He bought 10/2=5 pants
+So the pants cost 5*8=$40
+So in total the shirts and pants cost 6*10=$60
+So in total he pays 40+60=$100
+答案：100
+
+================================================================================
+[16] step=14  gold=20
+First 3 hours it takes to rise each dough ball
+Then 2 hours to bake each dough ball
+Total time = 3 + 2 = 5 hours
+If she makes 4 balls of dough one after another, it will take 4 * 5 = 20 hours
+答案：20
+
+================================================================================
+[17] step=71  gold=16
+The ratio of the two parts is 2+3=5.
+So each part is 40/5=8 meters long.
+Therefore, the shorter part is 8*2=16 meters long.
+答案：16
+
+================================================================================
+[18] step=149  gold=14
+After cutting off half her hair, she is left with 24/2=12" of hair
+After letting her hair grow out 4 more inches, her hair is 12+4=16"
+She then cuts off another 2" of hair, leaving her with 16-2=14" of hair
+答案：14
+
+================================================================================
+[19] step=77  gold=5
+Lyndee and her friends made a total of 11 pieces of fried chicken for everyone, but since Lyndee ate 1 piece, there are 11-1 = 10 pieces left for her friends.
+Since each friend ate 2 pieces, there were 10/2 = 5 friends over at Mrs. Crocker’s house.
+答案：5
+
+================================================================================
+[20] step=161  gold=6
+There are 26-2=24 miles between the first and the last checkpoint.
+There are therefore 24/4=6 miles between each checkpoint.
+答案：6
+
