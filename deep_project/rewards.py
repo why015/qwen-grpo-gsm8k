@@ -1,9 +1,20 @@
 """Reward functions for GRPO training with per-group audit logging."""
 import json
+import os
 import re
 from pathlib import Path
 
-from deep_project.verifier import grade
+# === 根据环境变量选择 verifier 严格度 ===
+# lenient (默认): 多格式解析，与历史 v3 训练一致
+# strict:         只接受最后一行"答案：X"，用于防 reward hacking 消融
+REWARD_MODE = os.environ.get("REWARD_MODE", "lenient")
+
+if REWARD_MODE == "strict":
+    from deep_project.verifier import grade_strict as _grade_fn
+    print("[reward] using STRICT verifier (last-line only)")
+else:
+    from deep_project.verifier import grade as _grade_fn
+    print("[reward] using LENIENT verifier (multi-format)")
 
 _AUDIT_LOG = []
 _AUDIT_PATH = None
@@ -46,7 +57,7 @@ def flush_audit():
 
 
 def reward_r1(completions, answer, **kwargs):
-    rewards = [float(grade(c[0]["content"], str(a))["reward"])
+    rewards = [float(_grade_fn(c[0]["content"], str(a))["reward"])
                for c, a in zip(completions, answer)]
     _STEP["n"] += 1
     _record(_STEP["n"], completions, answer, rewards)
@@ -60,7 +71,7 @@ def reward_r2(completions, answer, **kwargs):
     rewards = []
     for c, a in zip(completions, answer):
         resp = c[0]["content"]
-        correct = float(grade(resp, str(a))["reward"])
+        correct = float(_grade_fn(resp, str(a))["reward"])
         last_line = resp.strip().split("\n")[-1].strip()
         format_ok = 1.0 if _FORMAT_RE.match(last_line) else 0.0
         rewards.append(correct + 0.1 * format_ok)
@@ -73,7 +84,7 @@ def reward_r3(completions, answer, **kwargs):
     rewards = []
     for c, a in zip(completions, answer):
         resp = c[0]["content"]
-        correct = float(grade(resp, str(a))["reward"])
+        correct = float(_grade_fn(resp, str(a))["reward"])
         last_line = resp.strip().split("\n")[-1].strip()
         format_ok = 1.0 if _FORMAT_RE.match(last_line) else 0.0
         lines = [l.strip() for l in resp.strip().split("\n") if l.strip()]

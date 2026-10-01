@@ -4,8 +4,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from deep_project.verifier import grade, extract_answer, normalize
+from deep_project.verifier import grade, grade_strict, extract_answer, normalize
 
+
+# ============ 基础测试（lenient 主路径）============
 
 def test_exact_format():
     assert grade("答案：42", "42")["reward"] == 1.0
@@ -49,6 +51,38 @@ def test_parse_fail():
     assert grade("I don't know", "42")["reward"] == 0.0
     assert grade("", "42")["reward"] == 0.0
 
+
+# ============ strict vs lenient 对比测试 ============
+
+def test_strict_accepts_strict_format():
+    """strict 模式：只接受最后一行 '答案：X'"""
+    assert grade_strict("答案：42", "42")["reward"] == 1.0
+    assert grade_strict("答案：42。", "42")["reward"] == 1.0
+    assert grade_strict("先算一下\n答案：42", "42")["reward"] == 1.0
+
+
+def test_strict_rejects_loose_format():
+    """strict 模式：拒绝宽松格式"""
+    assert grade_strict("#### 42", "42")["reward"] == 0.0
+    assert grade_strict(r"\boxed{42}", "42")["reward"] == 0.0
+    assert grade_strict("The answer is 42.", "42")["reward"] == 0.0
+    assert grade_strict("答案：42 units", "42")["reward"] == 0.0
+
+
+def test_strict_rejects_answer_not_in_last_line():
+    """strict 模式：答案必须出现在最后一行"""
+    resp = "答案：42\n后面还有别的话"
+    assert grade_strict(resp, "42")["reward"] == 0.0
+
+
+def test_lenient_accepts_loose_format():
+    """lenient 模式：接受宽松格式"""
+    assert grade("#### 42", "42")["reward"] == 1.0
+    assert grade(r"\boxed{42}", "42")["reward"] == 1.0
+    assert grade("The answer is 42.", "42")["reward"] == 1.0
+
+
+# ============ 运行器 ============
 
 if __name__ == "__main__":
     import traceback
