@@ -506,7 +506,7 @@ Prompt C 与 GRPO v3 的恢复集合重叠仅 4 题，两者各自独立恢复 5
 - v2 恢复的 3 题中有 1 题（2216）在 v3 中反而没被恢复；
 - v2 与 v3 的恢复集合高度不对称，v3 的 9 题中 7 题是 v2 无法恢复的。
 
-这 is consistent with 12.2 节的结论：GRPO 效果对训练配置较为敏感。由于 v2 与 v3 并非严格控制变量实验，本节不进一步归因于单一参数。
+这与 12.2 节的结论一致：GRPO 效果对训练配置较为敏感。由于 v2 与 v3 并非严格控制变量实验，本节不进一步归因于单一参数。
 
 ### 12.4.6 SFT → GRPO v3 与 SFT → Prompt C 的对比
 
@@ -781,11 +781,13 @@ v3：1.3e-03
 
 ## 12.10 Multi-Seed 复现实验
 
-为排除 GRPO 相比 SFT 的差异来自训练随机性的可能，我们固定 GRPO v3 的全部超参数（max_steps=1000, num_generations=8, learning_rate=5e-6, beta=0.04, max_completion_length=256），仅改变随机种子，分别以 seed 42 / 1234 / 2026 训练三个独立模型，并在 dev500 与 held-out300 上评测。
+> **术语说明**：本节的 `tail300` 指原 held-out 300 条（heldout300.jsonl）。由于该子集在早期分析中已被观察过（用于 GRPO v2 vs v3 配置选择），它已不再构成严格意义上的独立 held-out。此处改名为 `tail300` 以更准确地反映其角色。真正未受污染的数据集是 GSM8K official test。
+
+为排除 GRPO 相比 SFT 的差异来自训练随机性的可能，我们固定 GRPO v3 的全部超参数（max_steps=1000, num_generations=8, learning_rate=5e-6, beta=0.04, max_completion_length=256），仅改变随机种子，分别以 seed 42 / 1234 / 2026 训练三个独立模型，并在 dev500 与 tail300 上评测。
 
 ### 12.10.1 三 Seed 完整结果
 
-| Model | dev500 | heldout300 |
+| Model | dev500 | tail300 (former held-out) |
 | :--- | :---: | :---: |
 | Base | 36.8% | 35.3% |
 | SFT | 46.8%（234 / 500） | 45.7%（137 / 300） |
@@ -798,24 +800,24 @@ v3：1.3e-03
 
 **① GRPO 训练方差极小（std 仅 0.5~0.7pp）**
 
-三个 seed 在 dev500 上的结果落在 46.2%~47.4% 之间，标准差仅 0.50pp；在 held-out300 上落在 43.7%~45.3%，标准差 0.72pp。
+三个 seed 在 dev500 上的结果落在 46.2%~47.4% 之间，标准差 0.50pp；在 tail300 上落在 43.7%~45.3%，标准差 0.72pp。
 
-这直接排除了「dev200 上的 +2.5pp 提升是训练随机性造成」的可能。之前观察到的 dev200 与 held-out 之间的方向反转（+2.5pp → −2.0pp），是**系统性差异**，而非随机波动。
+这一较小的方差提示：dev200 与 tail300 之间的方向反转不太可能仅由训练随机性解释。但当前结果尚不能唯一归因于 configuration-selection bias——也可能与两个子集的题型/难度分布差异、prompt 覆盖不同等因素有关。
 
 **② GRPO 相比 SFT 没有稳定提升**
 
 | 数据集 | SFT | GRPO mean | Delta |
 | :--- | :---: | :---: | :---: |
 | dev500 | 46.8% | 46.7% | **−0.1pp** |
-| held-out300 | 45.7% | 44.7% | **−1.0pp** |
+| tail300 | 45.7% | 44.7% | **−1.0pp** |
 
-在 held-out300 上，三个 GRPO seed 全部低于 SFT（43.7% / 45.3% / 45.0% vs 45.7%）。在 dev500 上，GRPO 三个 seed 的均值（46.7%）与 SFT（46.8%）几乎完全持平。
+在 tail300 上，三个 GRPO seed 均略低于 SFT（43.7% / 45.3% / 45.0% vs 45.7%）。在 dev500 上，GRPO 三个 seed 的均值（46.7%）与 SFT（46.8%）几乎持平。
 
-**③ 配置选择偏差得到确认**
+**③ 配置选择偏差是一个合理但未被唯一确认的解释**
 
-之前观察到 GRPO v3 在 dev200 上相比 SFT 提升 +2.5pp，但在 held-out300 上反而下降 −2.0pp。当时推测这是 configuration-selection bias（dev200 曾被用于 v2 vs v3 的配置比较）导致的。
+之前观察到 GRPO v3 在 dev200 上相比 SFT 提升 +2.5pp，但在 tail300 上反而下降 −2.0pp。当时推测这是 configuration-selection bias（dev200 曾被用于 v2 vs v3 的配置比较）导致的。
 
-三 seed 复现实验支持这一推测：**GRPO 在 dev 集上的表面优势无法在独立 held-out 上复现**。即使更换随机种子，这一模式仍然稳定存在。
+三 seed 复现实验与这一推测一致：GRPO 在 dev 集上的表面优势在 tail300 上未能复现，且这一模式在不同 seed 下稳定存在。但由于 dev200 与 tail300 的差异也可能来自题型/难度分布或 prompt 覆盖等因素，当前结果尚不能唯一确定配置选择偏差是主要机制。
 
 ### 12.10.3 项目核心结论
 
@@ -823,15 +825,15 @@ v3：1.3e-03
 
 > 在小规模 LLM（Qwen2.5-0.5B）与 GSM8K 数学推理任务上，**SFT 是最稳健的性能提升来源**，将 Base 从 36.8% 提升至 46.8%（+10.0pp），且在 dev 与 held-out 上方向一致。
 >
-> **GRPO 未能进一步改善推理能力**。三 seed 复现显示 GRPO 相比 SFT 的差异落在噪声范围内（dev500 delta −0.1pp，held-out300 delta −1.0pp），且 dev 集上的表面优势未在 held-out 上泛化。
+> **GRPO 在当前配置与数据规模下未能进一步改善推理能力**。三 seed 复现显示 GRPO 相比 SFT 的差异较小（dev500 delta −0.1pp，tail300 delta −1.0pp），且 dev 集上的表面优势在 tail300 上未能复现。
 >
-> 这一结论已通过四层 Reward Audit（Signal Availability / Reward Quality / Counterfactual / Reasoning Quality）排除了 reward 层面的原因，问题定位在 policy update 与泛化机制层面，需要更严格的消融实验进一步研究。
+> 当前的四层 Reward Audit（Signal Availability / Reward Quality / Counterfactual / Reasoning Quality）未发现 reward availability 的明显异常，但尚未排除 reward sparsity、difficulty bias 和 verifier noise。问题可能位于 policy update、数据覆盖、优化目标与泛化机制等多个层面，需要更严格的消融实验进一步研究。
 
 ## 12.11 Multi-Seed 实验的意义
 
 本节记录 Multi-Seed 实验在整个项目中的方法论价值：
 
-1. **区分方差与偏差**：单 seed 实验中，dev200 上的 +2.5pp 和 held-out 上的 −2.0pp 无法判断是"系统性差异"还是"随机波动"。三 seed 后标准差仅 0.5~0.7pp，可以明确判定为系统性差异（配置选择偏差）。
+1. **区分方差与偏差**：单 seed 实验中，dev200 上的 +2.5pp 和 tail300 上的 −2.0pp 无法判断是"系统性差异"还是"随机波动"。三 seed 后标准差仅 0.5~0.7pp，提示该差异更可能来自系统因素而非随机波动，但尚不能唯一归因于配置选择偏差。
 
 2. **验证泛化失败的稳定性**：如果只在 seed 42 上观察，可能被质疑"只是运气不好"。三 seed 全部低于 SFT 后，结论变得更加可靠。
 
