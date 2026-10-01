@@ -136,3 +136,27 @@ flush_audit()
 trainer.save_model(OUTPUT_DIR)
 tokenizer.save_pretrained(OUTPUT_DIR)
 print(f"GRPO 适配器已保存：{OUTPUT_DIR}")
+
+# === 生成 run manifest ===
+from deep_project.run_manifest import dump_manifest
+
+# 从 trainer state 里提取训练时长（如果有）
+train_runtime = None
+for log in reversed(trainer.state.log_history):
+    if "train_runtime" in log:
+        train_runtime = log["train_runtime"]
+        break
+
+dump_manifest(
+    output_dir=OUTPUT_DIR,
+    config=config,
+    extra={
+        "seed": int(os.environ.get("GRPO_SEED", "42")),
+        "reward_mode": os.environ.get("REWARD_MODE", "lenient"),
+        "model": "Qwen2.5-0.5B-Instruct (LoRA r=8 alpha=16)",
+        "sft_adapter": SFT_ADAPTER,
+    },
+    metrics={"train_runtime_sec": train_runtime},
+    notes=f"loss_type={LOSS_TYPE}, scale_rewards={SCALE_REWARDS}, "
+          f"epsilon_high={EPSILON_HIGH}, beta={config.beta}",
+)

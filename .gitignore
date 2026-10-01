@@ -32,3 +32,8 @@ backups/
 !deep_project/data/processed/regression28_ids.txt
 !docs/analysis/*.txt
 !logs/*.log
+
+# 允许提交 run manifest 和汇总结果
+!models/*/manifest.json
+!results/runs.csv
+!results/*/manifest.json
