@@ -95,7 +95,10 @@
 >
 > 因此，本文中的 "GRPO v3" 更准确地说是 **GRPO 与 DAPO 的混合配置**：采用 DAPO 的 token-level loss aggregation，但保留 GRPO 的对称裁剪和 group std normalization。
 >
-> 该配置已归档于 `configs/grpo_v3_resolved.json`。后续 GRPO / DAPO / Dr.GRPO 的对比消融将显式指定 `loss_type`、`scale_rewards`、`epsilon_high` 等参数以区分三种算法。
+> - **TRL 1.14 默认值**：`configs/trl_1_14_defaults_probe.json`
+> - **v3 实际使用配置**：`configs/grpo_v3_actual.json`（含 Git SHA 与重构说明）
+>
+> 后续 GRPO / DAPO / Dr.GRPO 的对比消融将显式指定 `loss_type`、`scale_rewards`、`epsilon_high` 等参数以区分三种算法。
 
 ## 三、Base 模型基线
 

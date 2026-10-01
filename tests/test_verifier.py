@@ -91,10 +91,10 @@ if __name__ == "__main__":
         if name.startswith("test_") and callable(fn):
             try:
                 fn()
-                print(f"✅ {name}")
+                print(f"[PASS] {name}")
                 passed += 1
             except AssertionError:
-                print(f"❌ {name}")
+                print(f"[FAIL] {name}")
                 traceback.print_exc()
                 failed += 1
     print(f"\n{passed} passed, {failed} failed")

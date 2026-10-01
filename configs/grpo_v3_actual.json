@@ -1,0 +1,33 @@
+{
+  "_comment": "Historical v3 actual configuration. loss_type/scale_rewards/epsilon_high were NOT explicitly set in v3 code, so TRL 1.14 defaults applied. See trl_1_14_defaults_probe.json for raw defaults.",
+  "_source": {
+    "git_sha_at_v3_run": "commit 3060bdf^ (train_grpo.py before explicit parameterization)",
+    "reconstruction_method": "Read from train_grpo.py's GRPOConfig + TRL 1.14 resolved defaults",
+    "note": "Actual values differ from TRL defaults in: beta (0.04 vs 0.0), num_generations (8 vs 8), max_completion_length (256 vs default)"
+  },
+  "config": {
+    "loss_type": "dapo",
+    "scale_rewards": "group",
+    "epsilon": 0.2,
+    "epsilon_high": null,
+    "beta": 0.04,
+    "num_generations": 8,
+    "learning_rate": 5e-6,
+    "max_steps": 1000,
+    "per_device_train_batch_size": 1,
+    "gradient_accumulation_steps": 8,
+    "max_completion_length": 256,
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "fp16": true,
+    "logging_steps": 5,
+    "save_strategy": "no",
+    "mask_truncated_completions": false,
+    "importance_sampling_level": "token"
+  },
+  "notes": [
+    "This file documents the ACTUAL v3 configuration used for seed 42/1234/2026.",
+    "For TRL 1.14 raw defaults, see trl_1_14_defaults_probe.json.",
+    "Future runs use manifest-based tracking: results/<run_id>/manifest.json."
+  ]
+}

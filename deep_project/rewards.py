@@ -12,9 +12,14 @@ REWARD_MODE = os.environ.get("REWARD_MODE", "lenient")
 if REWARD_MODE == "strict":
     from deep_project.verifier import grade_strict as _grade_fn
     print("[reward] using STRICT verifier (last-line only)")
-else:
+elif REWARD_MODE == "lenient":
     from deep_project.verifier import grade as _grade_fn
     print("[reward] using LENIENT verifier (multi-format)")
+else:
+    raise ValueError(f"REWARD_MODE must be 'lenient' or 'strict', got {REWARD_MODE!r}")
+
+# R2/R3 的格式判定始终使用 strict_parse，与训练 reward 严格度一致
+from deep_project.verifier import strict_parse
 
 _AUDIT_LOG = []
 _AUDIT_PATH = None
@@ -64,16 +69,13 @@ def reward_r1(completions, answer, **kwargs):
     return rewards
 
 
-_FORMAT_RE = re.compile(r"^答案\s*[:：]\s*[+-]?[\d.,]+")
-
-
 def reward_r2(completions, answer, **kwargs):
     rewards = []
     for c, a in zip(completions, answer):
         resp = c[0]["content"]
         correct = float(_grade_fn(resp, str(a))["reward"])
         last_line = resp.strip().split("\n")[-1].strip()
-        format_ok = 1.0 if _FORMAT_RE.match(last_line) else 0.0
+        format_ok = 1.0 if strict_parse(last_line) is not None else 0.0
         rewards.append(correct + 0.1 * format_ok)
     _STEP["n"] += 1
     _record(_STEP["n"], completions, answer, rewards)
@@ -86,7 +88,7 @@ def reward_r3(completions, answer, **kwargs):
         resp = c[0]["content"]
         correct = float(_grade_fn(resp, str(a))["reward"])
         last_line = resp.strip().split("\n")[-1].strip()
-        format_ok = 1.0 if _FORMAT_RE.match(last_line) else 0.0
+        format_ok = 1.0 if strict_parse(last_line) is not None else 0.0
         lines = [l.strip() for l in resp.strip().split("\n") if l.strip()]
         if len(lines) > 1:
             repeats = sum(1 for x, y in zip(lines, lines[1:]) if x == y)
