@@ -1,5 +1,72 @@
 # Small LLM 数学推理后训练实验记录
 
+## Quickstart
+
+从 clone 到复现完整评测流程：
+
+```bash
+# 1. 环境
+git clone https://github.com/why015/qwen-grpo-gsm8k.git
+cd qwen-grpo-gsm8k
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+
+# 2. 准备数据
+python deep_project/build_data.py
+
+# 3. 运行 verifier 单元测试
+python tests/test_verifier.py
+
+# 4. 训练 SFT
+python train_sft.py
+
+# 5. 训练 GRPO
+GRPO_SEED=42 python train_grpo.py
+
+# 6. 评测
+python deep_project/evaluate.py --data deep_project/data/processed/development500.jsonl --model runs/<run_id> --output runs/<run_id>/eval_dev500.jsonl
+
+# 7. 查看产物
+cat runs/<run_id>/manifest.json
+cat results/runs.csv
+```
+
+## 环境变量
+
+| 变量 | 默认值 | 作用 |
+| :--- | :--- | :--- |
+| `GRPO_SEED` | `42` | 随机种子 |
+| `LOSS_TYPE` | `dapo` | `grpo` / `dapo` / `dr_grpo` |
+| `SCALE_REWARDS` | `group` | `group` / `none` |
+| `EPSILON_HIGH` | `None` | DAPO 上界 |
+| `REWARD_VERSION` | `r1` | R1 / R2 / R3 |
+| `REWARD_MODE` | `lenient` | `lenient` / `strict` |
+| `STOP_AT_STEP` | 不设 | 提前停止 |
+
+## 产物结构
+
+```text
+runs/
+└── <run_id>/
+    ├── manifest.json
+    ├── audit_groups.jsonl
+    └── adapter_*.safetensors
+
+results/
+├── runs.csv
+├── seed_42/
+├── seed_1234/
+├── seed_2026/
+├── baseline_sft/
+└── baseline_base/
+```
+
+## 已知限制
+
+- 仓库不含模型权重和 GSM8K 原始数据。
+- 需要 8GB 以上显存。
+- TRL 1.14 默认 `loss_type='dapo'`。
+
 ## 一、项目概述
 
 本项目研究小规模语言模型在数学推理任务上的后训练行为。关注点不只是最终准确率，还包括以下问题：
