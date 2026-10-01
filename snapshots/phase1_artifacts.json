@@ -1,0 +1,84 @@
+{
+  "sft_adapter": {
+    "exists": true,
+    "size": 4096
+  },
+  "grpo_seed_42": {
+    "exists": true,
+    "size": 4096
+  },
+  "runs_csv": {
+    "exists": true,
+    "size": 1061
+  },
+  "data_processed": {
+    "train_clean": {
+      "exists": true,
+      "size": 5000888
+    },
+    "validation": {
+      "exists": true,
+      "size": 365459
+    },
+    "development500": {
+      "exists": true,
+      "size": 365459
+    },
+    "official_test": {
+      "exists": false,
+      "size": 0
+    }
+  },
+  "configs": [
+    {
+      "path": "configs/trl_1_14_defaults_probe.json",
+      "exists": true
+    },
+    {
+      "path": "configs/grpo_v3_actual.json",
+      "exists": true
+    }
+  ],
+  "results_archives": [
+    {
+      "path": "results/seed_42/dev500.jsonl",
+      "exists": true
+    },
+    {
+      "path": "results/seed_42/tail300.jsonl",
+      "exists": true
+    },
+    {
+      "path": "results/seed_1234/dev500.jsonl",
+      "exists": true
+    },
+    {
+      "path": "results/seed_1234/tail300.jsonl",
+      "exists": true
+    },
+    {
+      "path": "results/seed_2026/dev500.jsonl",
+      "exists": true
+    },
+    {
+      "path": "results/seed_2026/tail300.jsonl",
+      "exists": true
+    },
+    {
+      "path": "results/baseline_sft/dev500.jsonl",
+      "exists": true
+    },
+    {
+      "path": "results/baseline_sft/tail300.jsonl",
+      "exists": true
+    },
+    {
+      "path": "results/baseline_base/dev500.jsonl",
+      "exists": true
+    },
+    {
+      "path": "results/baseline_base/tail300.jsonl",
+      "exists": true
+    }
+  ]
+}

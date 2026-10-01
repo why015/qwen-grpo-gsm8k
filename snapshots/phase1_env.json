@@ -1,0 +1,14 @@
+{
+  "phase": 1,
+  "frozen_at": "2026-10-02T00:06:19",
+  "git_sha": "e47faa66e1f3d81c27861c38439de98e69a01fa5",
+  "python": "3.12.14",
+  "platform": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "torch": "2.13.0+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "transformers": "5.17.0",
+  "peft": "0.21.0",
+  "trl": "1.14.0",
+  "datasets": "5.0.1"
+}
