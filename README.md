@@ -91,6 +91,12 @@
 | SFT 训练时长 | 2052 秒（约 34 分钟） |
 | SFT 训练步数 | 约 1743 步 |
 
+> **配置说明（重要）**：本项目的 "GRPO v3" 基于 TRL 1.14.0 的 `GRPOConfig`。经审计确认，该版本的 `loss_type` 默认值为 `dapo`（token-level aggregation），`scale_rewards` 默认为 `group`（除以 group 标准差），但 `epsilon_high` 默认为 `None`（未启用 DAPO 的 asymmetric clipping）。
+>
+> 因此，本文中的 "GRPO v3" 更准确地说是 **GRPO 与 DAPO 的混合配置**：采用 DAPO 的 token-level loss aggregation，但保留 GRPO 的对称裁剪和 group std normalization。
+>
+> 该配置已归档于 `configs/grpo_v3_resolved.json`。后续 GRPO / DAPO / Dr.GRPO 的对比消融将显式指定 `loss_type`、`scale_rewards`、`epsilon_high` 等参数以区分三种算法。
+
 ## 三、Base 模型基线
 
 Base 模型在 200 条验证集样本上的结果如下：
@@ -324,6 +330,8 @@ SFT 正确、Prompt C 错误的新退化共 17 道，分类如下：
 | KL（全期均值） | 1.6e-03 | 1.3e-03 |
 | KL 中位数 | 1.4e-03 | 1.3e-03 |
 | 最后一步 KL | 1.5e-03 | 1.4e-03 |
+
+> **术语与配置说明**：本项目的 "GRPO v3" 基于 TRL 1.14 的 `GRPOConfig`。该版本 TRL 的 `loss_type` 默认为 `dapo`（token-level aggregation），`scale_rewards` 默认为 `group`（除以 group 标准差），但 `epsilon_high` 默认为 `None`（未启用 DAPO 的 asymmetric clipping）。因此本文中的 "GRPO v3" 更准确地说是 GRPO 与 DAPO 的混合配置。后续的 GRPO / DAPO / Dr.GRPO 消融实验将显式指定 `loss_type`、`scale_rewards`、`epsilon_high` 等参数以区分三种算法。
 
 ## 12.2 GRPO 基线结果（Development Set 上）
 

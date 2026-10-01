@@ -61,6 +61,12 @@ def final_answer_reward(completions, answer, **kwargs):
         rewards.append(float(grade(response, str(expected))["reward"]))
     return rewards
 
+# 显式控制 GRPO / DAPO / Dr.GRPO 关键参数
+LOSS_TYPE = os.environ.get("LOSS_TYPE", "dapo")             # "grpo" | "dapo" | "dr_grpo"
+SCALE_REWARDS = os.environ.get("SCALE_REWARDS", "group")     # "group" | "none"
+EPSILON_HIGH_STR = os.environ.get("EPSILON_HIGH", "")
+EPSILON_HIGH = float(EPSILON_HIGH_STR) if EPSILON_HIGH_STR else None  # None 或 0.28
+
 config = GRPOConfig(
     output_dir=OUTPUT_DIR,
     max_steps=1000,
@@ -72,6 +78,14 @@ config = GRPOConfig(
     top_p=0.95,
     learning_rate=5e-6,
     beta=0.04,
+    # === GRPO / DAPO / Dr.GRPO 关键参数（显式指定） ===
+    loss_type=LOSS_TYPE,
+    scale_rewards=SCALE_REWARDS,
+    epsilon=0.2,
+    epsilon_high=EPSILON_HIGH,
+    mask_truncated_completions=False,
+    importance_sampling_level="token",
+    # ================================================
     use_vllm=False,
     gradient_checkpointing=True,
     fp16=True,
@@ -80,6 +94,10 @@ config = GRPOConfig(
     report_to="none",
     seed=int(__import__("os").environ.get("GRPO_SEED", "42")),
 )
+
+print(f"[config] loss_type={LOSS_TYPE}, scale_rewards={SCALE_REWARDS}, "
+      f"epsilon=0.2, epsilon_high={EPSILON_HIGH}, "
+      f"mask_truncated={config.mask_truncated_completions}")
 
 from transformers import TrainerCallback
 
