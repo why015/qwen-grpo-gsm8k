@@ -13,7 +13,8 @@ import os
 from deep_project.rewards import REWARD_FUNCS, set_audit_path, flush_audit
 
 REWARD_VERSION = os.environ.get("REWARD_VERSION", "r1")
-REWARD_MODE = os.environ.get("REWARD_MODE", "lenient")
+# REWARD_MODE 从 rewards.py 统一导入，避免默认值分叉
+from deep_project.rewards import REWARD_MODE
 GRPO_SEED = int(os.environ.get("GRPO_SEED", "42"))
 
 # 显式控制 GRPO / DAPO / Dr.GRPO 关键参数
