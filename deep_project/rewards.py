@@ -7,7 +7,7 @@ from pathlib import Path
 # === 根据环境变量选择 verifier 严格度 ===
 # lenient (默认): 多格式解析，与历史 v3 训练一致
 # strict:         只接受最后一行"答案：X"，用于防 reward hacking 消融
-REWARD_MODE = os.environ.get("REWARD_MODE", "lenient")
+REWARD_MODE = os.environ.get("REWARD_MODE", "strict")  # 默认 strict；复现历史 v3 需显式传 REWARD_MODE=lenient
 
 if REWARD_MODE == "strict":
     from deep_project.verifier import grade_strict as _grade_fn

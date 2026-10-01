@@ -11,7 +11,10 @@ cd qwen-grpo-gsm8k
 pip install -r requirements.txt
 pip install -r requirements-dev.txt
 
-# 2. 准备数据
+# 2a. 下载 GSM8K 原始数据（国内可先 export HF_ENDPOINT=https://hf-mirror.com）
+python prepare_gsm8k.py
+
+# 2b. 构建训练/验证切分
 python deep_project/build_data.py
 
 # 3. 运行 verifier 单元测试
@@ -40,7 +43,7 @@ cat results/runs.csv
 | `SCALE_REWARDS` | `group` | `group` / `none` |
 | `EPSILON_HIGH` | `None` | DAPO 上界 |
 | `REWARD_VERSION` | `r1` | R1 / R2 / R3 |
-| `REWARD_MODE` | `lenient` | `lenient` / `strict` |
+| `REWARD_MODE` | `strict` | `strict`（默认）/ `lenient`（复现历史 v3） |
 | `STOP_AT_STEP` | 不设 | 提前停止 |
 
 ## 产物结构
@@ -66,6 +69,16 @@ results/
 - 仓库不含模型权重和 GSM8K 原始数据。
 - 需要 8GB 以上显存。
 - TRL 1.14 默认 `loss_type='dapo'`。
+
+**PowerShell 环境变量写法**（Windows 用户）：
+
+```powershell
+$env:GRPO_SEED = "42"
+$env:LOSS_TYPE = "dr_grpo"
+$env:SCALE_REWARDS = "none"
+$env:REWARD_MODE = "strict"
+python train_grpo.py
+```
 
 ## 一、项目概述
 

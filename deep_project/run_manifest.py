@@ -12,6 +12,7 @@ import os
 import platform
 import subprocess
 import sys
+import uuid
 from datetime import datetime
 from pathlib import Path
 
@@ -23,7 +24,7 @@ CSV_HEADER = [
     "model", "loss_type", "scale_rewards", "epsilon_high",
     "beta", "num_generations", "learning_rate", "max_steps",
     "seed", "reward_version", "reward_mode",
-    "dev500_acc", "heldout_acc", "train_runtime_sec",
+    "dev500_acc", "tail300_acc", "train_runtime_sec",
     "notes",
 ]
 
@@ -37,13 +38,16 @@ def make_run_id(
     num_gen=8,
     seed=42,
     timestamp=None,
+    short_uuid=None,
 ):
-    """生成唯一的 run_id。"""
+    """生成唯一的 run_id（短 UUID 避免同秒碰撞）。"""
     if timestamp is None:
         timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    if short_uuid is None:
+        short_uuid = uuid.uuid4().hex[:6]
     return (
         f"{algorithm}__loss-{loss_type}__reward-{reward}__verifier-{verifier}"
-        f"__beta-{beta}__g{num_gen}__seed-{seed}__{timestamp}"
+        f"__beta-{beta}__g{num_gen}__seed-{seed}__{timestamp}__{short_uuid}"
     )
 
 
@@ -129,7 +133,7 @@ def _append_to_csv(run_id, timestamp, git_sha, git_dirty, status,
         "reward_version": extra.get("reward_version", ""),
         "reward_mode": extra.get("reward_mode", ""),
         "dev500_acc": metrics.get("dev500_acc", ""),
-        "heldout_acc": metrics.get("heldout_acc", ""),
+        "tail300_acc": metrics.get("tail300_acc", ""),
         "train_runtime_sec": metrics.get("train_runtime_sec", ""),
         "notes": notes,
     }
@@ -243,7 +247,7 @@ def update_metrics(run_dir, metrics):
 
     Args:
         run_dir: runs/<run_id> 目录（或 Path）
-        metrics: {"dev500_acc": 0.468, "heldout_acc": 0.457}
+        metrics: {"dev500_acc": 0.468, "tail300_acc": 0.457}
     """
     run_dir = Path(run_dir)
     run_id = run_dir.name

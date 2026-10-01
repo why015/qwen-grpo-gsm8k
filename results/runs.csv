@@ -1,6 +1,6 @@
-run_id,timestamp,git_sha,git_dirty,status,model,loss_type,scale_rewards,epsilon_high,beta,num_generations,learning_rate,max_steps,seed,reward_version,reward_mode,dev500_acc,heldout_acc,train_runtime_sec,notes
-baseline_base,2026-09-30,historic,no,completed,Qwen2.5-0.5B-Instruct (LoRA r=8 alpha=16),n/a,n/a,,,,,,,,,0.39,0.3533,,"Base model, no training; dev_path is dev200"
-baseline_sft_v2,2026-09-30,historic,no,completed,Qwen2.5-0.5B-Instruct (LoRA r=8 alpha=16),n/a,n/a,,,,1e-04,1743,,,,0.468,0.4567,,SFT v2 LoRA r=8 alpha=16 epoch=1
-grpo_seed_42,2026-09-30,historic,no,completed,Qwen2.5-0.5B-Instruct (LoRA r=8 alpha=16),dapo,group,,0.04,8,5e-06,1000,42,r1,lenient,0.466,0.4367,,"GRPO v3 (loss=dapo, scale=group, beta=0.04)"
-grpo_seed_1234,2026-09-30,historic,no,completed,Qwen2.5-0.5B-Instruct (LoRA r=8 alpha=16),dapo,group,,0.04,8,5e-06,1000,1234,r1,lenient,0.474,0.4533,,"GRPO v3 (loss=dapo, scale=group, beta=0.04)"
-grpo_seed_2026,2026-10-01,historic,no,completed,Qwen2.5-0.5B-Instruct (LoRA r=8 alpha=16),dapo,group,,0.04,8,5e-06,1000,2026,r1,lenient,0.462,0.45,,"GRPO v3 (loss=dapo, scale=group, beta=0.04)"
+run_id,timestamp,git_sha,git_dirty,status,model,loss_type,scale_rewards,epsilon_high,beta,num_generations,learning_rate,max_steps,seed,reward_version,reward_mode,dev500_acc,tail300_acc,train_runtime_sec,notes
+baseline_base,2026-09-30,historic,no,completed,Qwen2.5-0.5B-Instruct (no training),n/a,n/a,,,,,,,,,0.368,0.3533,,Base model baseline
+baseline_sft_v2,2026-09-30,historic,no,completed,Qwen2.5-0.5B-Instruct + SFT LoRA,n/a,n/a,,,,1e-04,1743,,,,0.468,0.4567,,"SFT v2, LoRA r=8 alpha=16, epoch=1"
+grpo_seed_42,2026-09-30,historic,no,completed,Qwen2.5-0.5B-Instruct + SFT + GRPO LoRA,dapo,group,,0.04,8,5e-06,1000,42,r1,lenient,0.466,0.4367,,"GRPO v3 (dapo + group norm, beta=0.04)"
+grpo_seed_1234,2026-09-30,historic,no,completed,Qwen2.5-0.5B-Instruct + SFT + GRPO LoRA,dapo,group,,0.04,8,5e-06,1000,1234,r1,lenient,0.474,0.4533,,"GRPO v3 (dapo + group norm, beta=0.04)"
+grpo_seed_2026,2026-10-01,historic,no,completed,Qwen2.5-0.5B-Instruct + SFT + GRPO LoRA,dapo,group,,0.04,8,5e-06,1000,2026,r1,lenient,0.462,0.45,,"GRPO v3 (dapo + group norm, beta=0.04)"
