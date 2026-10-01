@@ -37,3 +37,12 @@ backups/
 !models/*/manifest.json
 !results/runs.csv
 !results/*/manifest.json
+
+# runs/ 目录：只提交 manifest.json 和 audit_groups.jsonl
+# 权重文件（*.safetensors / *.bin）已被上面规则排除
+runs/**/adapter_config.json
+runs/**/tokenizer.json
+runs/**/chat_template.jinja
+runs/**/tokenizer_config.json
+runs/**/README.md
+runs/**/ref/
